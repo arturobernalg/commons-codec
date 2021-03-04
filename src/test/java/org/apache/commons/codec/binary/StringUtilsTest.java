@@ -125,6 +125,16 @@ public class StringUtilsTest {
         Assert.assertNull(StringUtils.getBytesUnchecked(null, "UNKNOWN"));
     }
 
+    @Test
+    public void testIsEmpty() {
+        Assert.assertTrue(StringUtils.isEmpty(null));
+        Assert.assertTrue(StringUtils.isEmpty(""));
+        Assert.assertFalse(StringUtils.isEmpty(" "));
+        Assert.assertFalse(StringUtils.isEmpty("foo"));
+        Assert.assertFalse(StringUtils.isEmpty("  foo  "));
+    }
+
+
     private void testNewString(final String charsetName) throws UnsupportedEncodingException {
         final String expected = new String(BYTES_FIXTURE, charsetName);
         final String actual = StringUtils.newString(BYTES_FIXTURE, charsetName);

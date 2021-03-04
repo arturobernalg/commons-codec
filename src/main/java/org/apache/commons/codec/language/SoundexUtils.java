@@ -19,6 +19,7 @@ package org.apache.commons.codec.language;
 
 import org.apache.commons.codec.EncoderException;
 import org.apache.commons.codec.StringEncoder;
+import org.apache.commons.codec.binary.StringUtils;
 
 /**
  * Utility methods for {@link Soundex} and {@link RefinedSoundex} classes.
@@ -38,7 +39,7 @@ final class SoundexUtils {
      * @return A clean String.
      */
     static String clean(final String str) {
-        if (str == null || str.isEmpty()) {
+        if (StringUtils.isEmpty(str)) {
             return str;
         }
         final int len = str.length();

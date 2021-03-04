@@ -18,6 +18,8 @@
 package org.apache.commons.codec.binary;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.nio.charset.Charset;
@@ -25,6 +27,7 @@ import java.nio.charset.StandardCharsets;
 
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.EncoderException;
+import org.apache.commons.lang3.ArrayUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -194,6 +197,15 @@ public class BinaryCodecTest {
             decoded = (byte[]) instance.decode(encodeMe.toCharArray());
         }
         assertEquals(new String(bits), new String(decoded));
+    }
+
+    @Test
+    public void testIsEmpry() {
+        final byte[] emptyByteArray = new byte[]{};
+        final byte[] notEmptyByteArray = new byte[]{1};
+        assertTrue(ArrayUtils.isEmpty((byte[]) null));
+        assertTrue(ArrayUtils.isEmpty(emptyByteArray));
+        assertFalse(ArrayUtils.isEmpty(notEmptyByteArray));
     }
 
     /*
